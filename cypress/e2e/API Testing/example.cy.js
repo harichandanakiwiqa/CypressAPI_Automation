@@ -1,26 +1,31 @@
-const sinon = require("sinon");
 const chai = require("chai");
-const sinonChai = require("sinon-chai");
-
-chai.use(sinonChai);
 const expect = chai.expect;
 
-const myModule = require("./myModule");
+// Our test data
+const numbers = [1, 2, 3, 4, 5];
 
-describe("myModule", () => {
-  let myFunctionStub;
-
-  beforeEach(() => {
-    myFunctionStub = sinon.stub(myModule, "myFunction");
+describe("Numbers Test Suite", () => {
+  it("should contain only numbers", () => {
+    numbers.forEach((number) => {
+      expect(number).to.be.a("number");
+    });
   });
 
-  afterEach(() => {
-    myFunctionStub.restore();
+  it("should not contain any strings", () => {
+    numbers.forEach((number) => {
+      expect(number).to.not.be.a("string");
+    });
   });
 
-  it("should call myFunction with the correct arguments", () => {
-    myModule.someMethod("test");
+  it("should contain 5 numbers", () => {
+    expect(numbers).to.have.lengthOf(5);
+  });
 
-    expect(myFunctionStub).to.have.been.calledWithExactly("test");
+  it("should not contain more than 5 numbers", () => {
+    expect(numbers).to.not.have.lengthOf(6);
+  });
+
+  it("should contain 1, 2, 3, 4, and 5", () => {
+    expect(numbers).to.include.members([1, 2, 3, 4, 5]);
   });
 });

@@ -179,3 +179,38 @@ expect(xhr.response.body).to.have.property('success', true);
 });
 In this example, the HTTP request made when the form is submitted will be intercepted and controlled by the cy.route() method.
 The method 'POST' and the URL '/submit-form' are used to match the request. The response will be controlled as well, returning a JSON object with the property 'success' set to true. The cy.wait() method is used to wait for the HTTP request to complete and then the response is asserted using the expect function.
+
+> ## Assertions
+
+Assertions play a crucial role in automated test cases by verifying the success or failure of specific steps.
+They serve to validate the desired state of elements, objects, or the application being tested.
+For example, assertions allow you to confirm whether an element is visible, possesses a specific attribute, CSS class, or state.
+It is highly recommended that all automated test cases include assertion steps. Without them, it becomes impractical to validate whether the application has achieved the expected state.
+Cypress incorporates assertions from Chai, Sinon, and jQuery libraries, providing a bundled set of assertion capabilities.
+
+> What are different types of Cypress Assertions?
+
+Cypress integrates multiple assertions from various JS assertion libraries such as Chai, jQuery, etc.
+We can broadly classify all of these assertions into two segments based on the subject on which we can invoke them:
+
+> Implicit Assertions
+
+When the assertion applies to the object provided by the parent chained command, it's called an Implicit assertion.
+Additionally, this category of assertions generally includes commands such as .should() and .and().
+As these commands don't stand independently and always depends on the previously chained parent command, they automatically inherit and acts on the object yielded by the previous command.
+
+Generally, we use Implicit assertions when we want to:
+
+Assert multiple validations about the same subject.
+Alter the subject before making the assertions on the subject.
+
+> Explicit Assertions
+
+When there is a need to pass an explicit subject for the assertion, it falls under the category of Explicit assertion.
+This category of assertions contains the commands such as expect() and assert(), which allow you to pass an explicit subject/object.
+
+Generally, You will be using "Explicit assertions" when you want to:
+
+Perform some custom logic before making the assertions on the given subject.
+Perform multiple assertions against the same subject after applying custom logic.
+The most commonly used assertions are Should and Expect. Assert is not commonly used in e2e test, but rather in unit testing or component testing.
