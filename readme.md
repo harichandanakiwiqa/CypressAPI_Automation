@@ -1,3 +1,55 @@
+# Sauce Login Page Automation
+
+This project demonstrates how to automate the login process for the Sauce Labs demo website using Cypress. The code is written in JavaScript and uses the Mocha framework for testing.
+
+## Prerequisites
+
+Before you can run the tests, you will need to install the following dependencies:
+
+- Cypress
+- Mocha
+- Chai
+
+You can install these dependencies using the following commands:
+
+npm install cypress --save-dev
+npm install mocha --save-dev
+npm install chai --save-dev
+
+## Project Structure
+
+The project is structured as follows:
+
+- `cypress/e2e/Loginpage.spec.js`: This file contains the Cypress tests.
+- `cypress/support/index.js`: This file contains the Cypress configuration.
+- `package.json`: This file contains the project dependencies.
+
+## Cypress Tests
+
+The Cypress tests are located in the `cypress/e2e/Loginpage.spec.js` file. These tests use the Mocha framework for testing.
+
+The first test, `Before each from fixture`, loads the user data from the `loginsaucedemo.json` fixture file. This fixture file contains the username and password for the Sauce Labs demo website.
+
+The second test, `Sauce Login Page`, visits the Sauce Labs demo website and then logs in using the username and password from the fixture file. After logging in, the test verifies that the user is redirected to the inventory page.
+
+## Cypress Configuration
+
+The Cypress configuration is located in the `cypress/support/index.js` file. This file contains the following configuration options:
+
+- `baseUrl`: The base URL for the Sauce Labs demo website.
+
+## Running the Tests
+
+To run the Cypress tests, open a terminal window and navigate to the project directory. Then, run the following command:
+
+npx cypress run
+
+This command will start the Cypress test runner and run all of the tests in the `cypress/e2e` directory.
+
+or to open cypress app to execute the tests
+
+npx cypress open
+
 # Cypress API testing
 
 > Example on GET using cypress
