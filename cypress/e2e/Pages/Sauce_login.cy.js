@@ -6,15 +6,15 @@ export class Loginpage {
   validate_message =
     "body > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)";
 
-  LoginDetails(userdata) {
-    cy.get(this.Login_username).type(userdata.username);
-    cy.get(this.Login_password).type(userdata.password);
+  LoginDetails(data) {
+    cy.get(this.Login_username).type(data.username);
+    cy.get(this.Login_password).type(data.password);
   }
 
   LoginButton() {
     cy.get(this.Login_button).click();
   }
-  validate(userdata) {
-    cy.get(this.validate_message).contains(userdata.expected);
+  validate(data) {
+    cy.get(this.validate_message).contains(data.expected);
   }
 }
