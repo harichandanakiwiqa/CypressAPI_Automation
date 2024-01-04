@@ -23,23 +23,19 @@ export class requestdemofields extends Loginpage {
 
     cy.get(this.about_button).click();
 
-    cy.origin("https://saucelabs.com/", () => {
-      cy.visit("https://saucelabs.com/");
+    cy.get(this.requestdemobutton).click();
 
-      cy.get(this.requestdemobutton).click();
+    //cy.get(this.firstname).type("chandana");
+    //cy.get(this.lastname).type("p");
+    cy.get(this.email).type("harichandanap53@gmail.com");
+    cy.get(this.company).type("QA");
+    //cy.get(this.phonenumber).type(123456789);
 
-      //cy.get(this.firstname).type("chandana");
-      //cy.get(this.lastname).type("p");
-      cy.get(this.email).type("harichandanap53@gmail.com");
-      cy.get(this.company).type("QA");
-      //cy.get(this.phonenumber).type(123456789);
+    //cy.get(this.country).trigger("India");
+    cy.get(this.selectoption).trigger("Sauce Mobile");
+    cy.get(this.checkbox1).click();
+    cy.get(this.submitbutton).click();
 
-      //cy.get(this.country).trigger("India");
-      cy.get(this.selectoption).trigger("Sauce Mobile");
-      cy.get(this.checkbox1).click();
-      cy.get(this.submitbutton).click();
-
-      cy.log("Request demo submitted successfully.");
-    });
+    cy.log("Request demo submitted successfully.");
   }
 }

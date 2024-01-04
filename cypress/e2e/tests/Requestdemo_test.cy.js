@@ -12,6 +12,7 @@ describe("Request Demo", () => {
       request_demo.LoginButton();
       cy.origin("https://saucelabs.com/", () => {
         request_demo.requestDemoSignup();
+        cy.visit("https://www.saucedemo.com");
       });
     });
   });
