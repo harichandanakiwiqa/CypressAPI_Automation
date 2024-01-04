@@ -50,6 +50,29 @@ or to open cypress app to execute the tests
 
 npx cypress open
 
+## To fix power shell issues
+
+error Error: spawn powershell.exe ENOENTError
+
+This error is due to the PowerShell executable not being found in the system's PATH. To fix this issue, follow these steps:
+
+First, ensure that PowerShell is installed on your system. If it's not installed, you can download it from the official Microsoft website.
+
+After installing PowerShell, locate the "powershell.exe" file. It is typically located in the "C:\Windows\System32\WindowsPowerShell\v1.0" directory.
+
+Once you have found the "powershell.exe" file, you need to add its location to your system's PATH environment variable. To do this, follow these steps:
+
+Right-click on "Computer" or "This PC" and select "Properties".
+Click on "Advanced system settings".
+In the "System Properties" window, go to the "Advanced" tab and click on the "Environment Variables" button.
+In the "Environment Variables" window, scroll down to the "System variables" section and find the "Path" variable.
+Click on the "Path" variable and then click on the "Edit" button.
+In the "Edit environment variable" window, click on the "New" button and add the directory path where the "powershell.exe" file is located (e.g., "C:\Windows\System32\WindowsPowerShell\v1.0").
+Click "OK" to save your changes and close all the open windows.
+Finally, restart your terminal or command prompt for the changes to take effect.
+
+Now, when you try to run your command again, it should be able to find the "powershell.exe" file and execute without any errors.
+
 # Cypress API testing
 
 > Example on GET using cypress
