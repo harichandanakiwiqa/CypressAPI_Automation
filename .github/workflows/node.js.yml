@@ -1,31 +1,45 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
-
+name: example-basic
+# This workflow represents a set of basic End-to-End tests
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - 'main'
   pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  build:
 
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+  basic-ubuntu-20:
+    runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-  
-    - run: npm test
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress tests
+        # Normally you would write
+        # uses: cypress-io/github-action@v6
+        uses: ./
+        # The parameters below are only necessary
+        # because we are running these examples in a mono repo
+        with:
+          working-directory: cypress/e2e
+          # just for the full picture after installing Cypress
+          # Print information about detected browsers, etc
+          # see https://on.cypress.io/command-line#cypress-info
+          build: npx cypress info
+
+
+
+  basic-on-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress tests
+        uses: ./
+        with:
+          working-directory: cypress/e2e
+          build: npx cypress info
+
+
