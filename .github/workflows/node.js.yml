@@ -14,11 +14,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Cypress tests
-        uses: ./
+ 
+      - name: Cypress run
+        uses: CypressAPI_Automation@v3
         with:
-          working-directory: cypress/e2e
-          build: npx cypress run
+          project: ./site
+          browser: Chrome
+          build: yarn build
+          start: npx cypress run
+          wait-on: "http://localhost:3000"
 
 
