@@ -1,4 +1,4 @@
-name: example-basic
+name: Cypress Test
 # This workflow represents a set of basic End-to-End tests
 on:
   push:
@@ -9,28 +9,7 @@ on:
 
 jobs:
 
-  basic-ubuntu-20:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Cypress tests
-        # Normally you would write
-        # uses: cypress-io/github-action@v6
-        uses: ./
-        # The parameters below are only necessary
-        # because we are running these examples in a mono repo
-        with:
-          working-directory: cypress/e2e
-          # just for the full picture after installing Cypress
-          # Print information about detected browsers, etc
-          # see https://on.cypress.io/command-line#cypress-info
-          build: npx cypress info
-
-
-
-  basic-on-windows:
+   basic-on-windows:
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -40,6 +19,6 @@ jobs:
         uses: ./
         with:
           working-directory: cypress/e2e
-          build: npx cypress info
+          build: npx cypress run
 
 
